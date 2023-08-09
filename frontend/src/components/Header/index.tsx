@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 
 type HeaderProps = {
   author: string;
@@ -10,8 +10,8 @@ type NavItem = {
 };
 
 const links: NavItem[] = [
-  { link: '/', label: '_upload-transactions' },
-  { link: '/sellers', label: '_sellers' },
+  { link: "/", label: "_upload-transactions" },
+  { link: "/sellers", label: "_sellers" },
 ];
 
 export function Header({ author }: HeaderProps): JSX.Element {
@@ -20,12 +20,12 @@ export function Header({ author }: HeaderProps): JSX.Element {
       <div className="w-60 flex items-center pl-6 py-4 border-r border-slate-800">
         {author}
       </div>
-      {links.map(link => (
+      {links.map((link) => (
         <NavLink
           key={link.label}
           className="px-8 py-4 border-r border-slate-800 hover:border-b-[#FEA55F]/[0.33] hover:border-b-[3px]"
           style={({ isActive }) =>
-            isActive ? { borderBottom: '3px solid #FEA55F', color: '#FFF' } : {}
+            isActive ? { borderBottom: "3px solid #FEA55F", color: "#FFF" } : {}
           }
           to={link.link}
         >
