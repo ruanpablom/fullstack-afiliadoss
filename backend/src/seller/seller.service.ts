@@ -31,4 +31,8 @@ export class SellerService {
   async list() {
     return this.prismaService.sellers.findMany();
   }
+
+  async listTransactions(id: number) {
+    return this.prismaService.transactions.findMany({ where: { seller: id } });
+  }
 }
