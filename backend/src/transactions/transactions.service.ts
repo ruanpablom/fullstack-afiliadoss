@@ -31,12 +31,9 @@ export class TransactionsService {
   }
 
   async createTransaction(data: CreateTransactionDto) {
-    const transaction = await this.prismaService.transactions.create({
+    return this.prismaService.transactions.create({
       data,
-      select: { id: true },
     });
-    console.log(data);
-    console.log(transaction);
   }
 
   async processFile(file: Express.Multer.File) {
@@ -61,7 +58,7 @@ export class TransactionsService {
       });
     }
 
-    for (const entry of entries) {
+    for (const [index, entry] of entries.entries()) {
       try {
         const sellerId = await this.sellerService.create(entry.seller);
         const transaction: CreateTransactionDto = {
@@ -70,8 +67,7 @@ export class TransactionsService {
         };
         await this.createTransaction(transaction);
       } catch (err) {
-        errors.push(err.message);
-        console.log(err);
+        errors.push(`line ${index + 1}: db insertion error`);
       }
     }
 
