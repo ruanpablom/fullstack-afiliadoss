@@ -7,7 +7,10 @@ import {
 import { Input } from "@/components/Input";
 import { useUploadTransactionsFile } from "@/services/upload-transactions-file";
 
-export function UploadForm(): JSX.Element {
+interface UploadFormProps {
+  onSuccess: () => void;
+}
+export function UploadForm({ onSuccess }: UploadFormProps): JSX.Element {
   const [uploadTransactionsFile, { loading, erro }] =
     useUploadTransactionsFile();
 
@@ -21,10 +24,14 @@ export function UploadForm(): JSX.Element {
   });
 
   const onSubmit = (data: UploadFormValues) => {
-    uploadTransactionsFile(data.file[0]).then((result) => {
-      console.info(result);
-      reset();
-    });
+    uploadTransactionsFile(data.file[0])
+      .then((_) => {
+        onSuccess();
+        reset();
+      })
+      .catch((_) => {
+        reset();
+      });
   };
 
   return (
