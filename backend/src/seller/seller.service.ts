@@ -27,4 +27,8 @@ export class SellerService {
 
     return sellerId;
   }
+
+  async list() {
+    return this.prismaService.sellers.findMany();
+  }
 }
