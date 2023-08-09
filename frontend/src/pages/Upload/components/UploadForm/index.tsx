@@ -8,7 +8,8 @@ import { Input } from "@/components/Input";
 import { useUploadTransactionsFile } from "@/services/upload-transactions-file";
 
 export function UploadForm(): JSX.Element {
-  const [uploadTransactionsFile, { loading }] = useUploadTransactionsFile();
+  const [uploadTransactionsFile, { loading, erro }] =
+    useUploadTransactionsFile();
 
   const {
     register,
@@ -27,7 +28,10 @@ export function UploadForm(): JSX.Element {
   };
 
   return (
-    <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
+    <form
+      className="flex flex-col gap-4 w-96"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <Input
         id="file"
         label="File:"
@@ -36,6 +40,16 @@ export function UploadForm(): JSX.Element {
         {...register("file")}
         errors={errors.file}
       />
+      {erro ? (
+        <div className="flex flex-col w-full gap-4">
+          <span className="text-red-500">{erro.response?.data.message}</span>
+          {erro.response?.data.errors.map((err) => (
+            <span className="text-red-500">{err}</span>
+          ))}
+        </div>
+      ) : (
+        ""
+      )}
       <button
         className="flex items-center justify-center bg-indigo-500 text-slate-900 font-semibold px-2 py-1 rounded-sm cursor-pointer hover:bg-indigo-400"
         type="submit"
