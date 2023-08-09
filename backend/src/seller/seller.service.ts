@@ -10,7 +10,7 @@ export class SellerService {
       where: { name },
     });
 
-    return seller.id || null;
+    return seller ? seller.id : null;
   }
 
   async create(name: string) {

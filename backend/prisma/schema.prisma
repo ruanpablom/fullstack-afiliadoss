@@ -15,6 +15,7 @@ model sellers {
 
 model transactions {
   id      Int      @id(map: "transactions_pk") @default(autoincrement())
+  type    Int
   date    DateTime @db.Timetz(6)
   product String   @db.VarChar(30)
   value   BigInt
