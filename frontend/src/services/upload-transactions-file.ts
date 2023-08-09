@@ -13,6 +13,7 @@ export function useUploadTransactionsFile(): UseUploadTransactionsFileReturn {
   const uploadTransactionsFile = useCallback(async (file: File) => {
     try {
       setLoading(true);
+      setErro(undefined);
       const { data: result } =
         await baseService.post<UploadTransactionFileResponse>(
           "transactions/upload",
