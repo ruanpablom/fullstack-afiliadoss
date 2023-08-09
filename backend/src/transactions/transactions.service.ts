@@ -52,7 +52,7 @@ export class TransactionsService {
     }
 
     if (errors.length > 0) {
-      return new BadRequestException({
+      throw new BadRequestException({
         message: 'You must correct the errors, then upload the file again',
         errors,
       });
@@ -72,7 +72,7 @@ export class TransactionsService {
     }
 
     if (errors.length > 0) {
-      return new BadRequestException({
+      throw new BadRequestException({
         message: 'You must correct the errors, then upload the file again',
         errors,
       });
