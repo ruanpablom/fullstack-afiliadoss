@@ -8,6 +8,7 @@
   "extends": [
     "plugin:react/recommended",
     "airbnb",
+    "airbnb-typescript",
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "prettier"
@@ -99,10 +100,12 @@
       "error",
       "ignorePackages",
       {
+        "js": "never",
+        "jsx": "never",
         "ts": "never",
         "tsx": "never"
       }
-    ]
+   ]
   },
   "settings": {
     "react": { "version": "detect" },
