@@ -1,9 +1,10 @@
 version: '3.1'
 
 services:
-
-  db:
+  postgres:
     image: postgres
+    networks:
+      - postgres
     restart: always
     environment:
       POSTGRES_DB: fullstack-afiliados
@@ -16,5 +17,32 @@ services:
     volumes:
       - db-volume:/var/lib/postgresql
 
+  api:
+    image: fullstack-afiliados-api
+    build: ./backend
+    env_file:
+      - ./backend/.env.production
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    networks:
+      - postgres
+
+  front:
+    image: fullstack-afiliados-front
+    build: ./frontend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - api
+    networks:
+      - postgres
+    
+
 volumes:
   db-volume: {}
+
+networks:
+  postgres:
+    driver: bridge
