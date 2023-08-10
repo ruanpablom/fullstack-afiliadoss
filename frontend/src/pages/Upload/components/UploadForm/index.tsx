@@ -5,7 +5,7 @@ import {
   uploadFormSchema,
 } from "@/schemas/upload-form-schema";
 import { Input } from "@/components/Input";
-import { useUploadTransactionsFile } from "@/services/upload-transactions-file";
+import { useUploadTransactionsFile } from "@/services/transactions/upload-transactions-file";
 
 interface UploadFormProps {
   onSuccess: () => void;

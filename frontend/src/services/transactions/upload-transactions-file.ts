@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { AxiosError } from "axios";
 import { UploadTransactionFileResponse } from "@/models/upload-transacions-file";
-import { baseService } from "./base-service";
+import { baseService } from "../base-service";
 import { UseUploadTransactionsFileReturn } from "./types";
 
 export function useUploadTransactionsFile(): UseUploadTransactionsFileReturn {
