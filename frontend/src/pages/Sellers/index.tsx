@@ -13,7 +13,7 @@ export function Sellers(): JSX.Element {
   }, [getAllSellers]);
 
   return (
-    <div className="flex flex-col gap-6 w-full">
+    <div className="flex flex-col gap-6 w-full items-center">
       <PageTitle>Sellers</PageTitle>
       {sellers.length > 0 ? (
         <SellerList sellers={sellers} />

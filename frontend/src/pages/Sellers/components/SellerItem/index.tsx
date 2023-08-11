@@ -14,6 +14,7 @@ export function SellerItem({ seller }: SellerItemProps): JSX.Element {
       <NavLink
         className="px-2 py-1 bg-indigo-500 hover:bg-indigo-400 text-slate-900 rounded-lg font-semibold"
         to={`/seller/${id}/transactions`}
+        state={{ name }}
       >
         TRANSACTIONS
       </NavLink>
