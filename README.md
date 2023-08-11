@@ -1,5 +1,8 @@
 # Fullstack Afiliados
 >  This is a challenge by [Coodesh](https://coodesh.com/)
+
+## Techs
+NodeJS, NestJS, TypeScript, ReacJS, Prisma, PostgreSQl, Docker
 ## Runing the Project
 To run the projet you must have Docker and docker-compose on your machine.  
 Inside project folder run ```$ docker-compose up -d```  
